@@ -41,13 +41,6 @@
       <url>https://github.com/brettwooldridge</url>
    </organization>
 
-   <scm>
-      <connection>scm:git:git@github.com:brettwooldridge/HikariCP.git</connection>
-      <developerConnection>scm:git:git@github.com:brettwooldridge/HikariCP.git</developerConnection>
-      <url>git@github.com:brettwooldridge/HikariCP.git</url>
-      <tag>HEAD</tag>
-   </scm>
-
    <licenses>
       <license>
          <name>The Apache Software License, Version 2.0</name>
@@ -62,12 +55,6 @@
          <email>brett.wooldridge@gmail.com</email>
       </developer>
    </developers>
-
-   <parent>
-      <groupId>org.sonatype.oss</groupId>
-      <artifactId>oss-parent</artifactId>
-      <version>9</version>
-   </parent>
 
    <prerequisites>
       <maven>3.3.9</maven>
@@ -240,8 +227,42 @@
          <scope>test</scope>
       </dependency>
    </dependencies>
+   <distributionManagement>
+      <snapshotRepository>
+         <id>repo.gravity.maven.snapshot</id>
+         <url>s3://repos.gravity.maven.public/snapshot</url>
+      </snapshotRepository>
+      <repository>
+         <id>repo.gravity.maven</id>
+         <url>s3://repos.gravity.maven.public/release</url>
+      </repository>
+   </distributionManagement>
+   <repositories>
+      <repository>
+         <id>repo.gravity.maven</id>
+         <url>s3://repos.gravity.maven.public/release</url>
+      </repository>
+      <repository>
+         <id>repo.gravity.maven.snapshot</id>
+         <url>s3://repos.gravity.maven.public/snapshot</url>
+      </repository>
+   </repositories>
+   <pluginRepositories>
+      <pluginRepository>
+         <id>gravity-public</id>
+         <name>gravity-public repository</name>
+         <url>https://s3.eu-west-2.amazonaws.com/repos.gravity.maven.public/</url>
+      </pluginRepository>
+   </pluginRepositories>
 
    <build>
+      <extensions>
+         <extension>
+            <groupId>org.springframework.build</groupId>
+            <artifactId>aws-maven-gravity</artifactId>
+            <version>5.1.0</version>
+         </extension>
+      </extensions>
       <plugins>
          <plugin>
             <!-- Generate proxies -->
@@ -452,34 +473,6 @@
             <sureFireForks9>true</sureFireForks9>
             <artifact.classifier>java9</artifact.classifier>
          </properties>
-      </profile>
-
-      <profile>
-         <id>release-sign-artifacts</id>
-         <activation>
-            <property>
-               <name>performRelease</name>
-               <value>true</value>
-            </property>
-         </activation>
-         <build>
-            <plugins>
-               <plugin>
-                  <groupId>org.apache.maven.plugins</groupId>
-                  <artifactId>maven-gpg-plugin</artifactId>
-                  <version>1.6</version>
-                  <executions>
-                     <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                           <goal>sign</goal>
-                        </goals>
-                     </execution>
-                  </executions>
-               </plugin>
-            </plugins>
-         </build>
       </profile>
 
       <profile>
