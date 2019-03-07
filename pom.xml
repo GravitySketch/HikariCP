@@ -29,7 +29,7 @@
 
    <groupId>com.zaxxer</groupId>
    <artifactId>HikariCP</artifactId>
-   <version>3.3.2-GRAVITYSKETCH</version>
+   <version>3.3.3-GRAVITYSKETCH-SNAPSHOT</version>
    <packaging>bundle</packaging>
 
    <name>HikariCP</name>
