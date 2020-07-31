@@ -229,21 +229,21 @@
    </dependencies>
    <distributionManagement>
       <snapshotRepository>
-         <id>repo.gravity.maven.snapshot</id>
+         <id>repos.gravity.maven.snapshot</id>
          <url>s3://repos.gravity.maven.public/snapshot</url>
       </snapshotRepository>
       <repository>
-         <id>repo.gravity.maven</id>
+         <id>repos.gravity.maven</id>
          <url>s3://repos.gravity.maven.public/release</url>
       </repository>
    </distributionManagement>
    <repositories>
       <repository>
-         <id>repo.gravity.maven</id>
+         <id>repos.gravity.maven</id>
          <url>s3://repos.gravity.maven.public/release</url>
       </repository>
       <repository>
-         <id>repo.gravity.maven.snapshot</id>
+         <id>repos.gravity.maven.snapshot</id>
          <url>s3://repos.gravity.maven.public/snapshot</url>
       </repository>
    </repositories>
@@ -251,7 +251,7 @@
       <pluginRepository>
          <id>gravity-public</id>
          <name>gravity-public repository</name>
-         <url>https://s3.eu-west-2.amazonaws.com/repos.gravity.maven.public/</url>
+         <url>https://s3.eu-west-2.amazonaws.com/repos.gravity.maven.public2/release/</url>
       </pluginRepository>
    </pluginRepositories>
 
